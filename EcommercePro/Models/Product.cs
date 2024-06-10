@@ -14,13 +14,11 @@ namespace EcommercePro.Models
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        //[ForeignKey("Brand")]
+      //  [ForeignKey("Brand")]
         public int? BrandId { set; get; }
         public ApplicationUser? Brand { get; set; }
         public List<ProductReview>? Reviews { get; set; }
         public DateOnly? CreatedDate { get; set; }
-
-
         public class FileUpload
         {
             public IFormFile Image { get; set; }

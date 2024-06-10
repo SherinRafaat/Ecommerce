@@ -13,8 +13,8 @@ namespace EcommercePro.DTO
         [Required(ErrorMessage = "The Price of Product is Reqiured")]
         [ProductPrice]
         public decimal Price { get; set; }
+        [Required(ErrorMessage = "The Quantity of Product is Reqiured")]
         public int Quentity { get; set; }
-        [Required(ErrorMessage = "The Image of Product is Reqiured")]
         public string image {  get; set; }
         public IFormFile? formFile { get; set; }    
         [ForeignKey("Category")]

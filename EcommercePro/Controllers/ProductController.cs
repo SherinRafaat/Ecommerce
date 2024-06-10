@@ -133,7 +133,6 @@ namespace EcommercePro.Controllers
                     CategoryId = updateProduct.CategoryId,
                     ImagePath=updateProduct.image
                 });
-
                 if (isupdated)
                 {
                     return Ok();
