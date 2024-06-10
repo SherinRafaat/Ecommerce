@@ -236,8 +236,6 @@ namespace EcommercePro.Controllers
 
                         }
                     }
-
-
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {

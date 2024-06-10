@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommercePro.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240605105404_init")]
-    partial class init
+    [Migration("20240610091946_neww")]
+    partial class neww
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -288,8 +288,10 @@ namespace EcommercePro.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BrindId")
-                        .IsRequired()
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("BrandId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CategoryId")
@@ -299,6 +301,10 @@ namespace EcommercePro.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -313,7 +319,7 @@ namespace EcommercePro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrindId");
+                    b.HasIndex("BrandId1");
 
                     b.HasIndex("CategoryId");
 
@@ -602,11 +608,9 @@ namespace EcommercePro.Migrations
 
             modelBuilder.Entity("EcommercePro.Models.Product", b =>
                 {
-                    b.HasOne("EcommercePro.Models.ApplicationUser", "Brind")
+                    b.HasOne("EcommercePro.Models.ApplicationUser", "Brand")
                         .WithMany()
-                        .HasForeignKey("BrindId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BrandId1");
 
                     b.HasOne("EcommercePro.Models.Category", "Category")
                         .WithMany("Products")
@@ -614,7 +618,7 @@ namespace EcommercePro.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brind");
+                    b.Navigation("Brand");
 
                     b.Navigation("Category");
                 });
