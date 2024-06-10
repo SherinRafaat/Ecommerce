@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EcommercePro.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -268,18 +268,18 @@ namespace EcommercePro.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quentity = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    BrindId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    BrandId = table.Column<int>(type: "int", nullable: false),
+                    BrandId1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedDate = table.Column<DateOnly>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_AspNetUsers_BrindId",
-                        column: x => x.BrindId,
+                        name: "FK_Products_AspNetUsers_BrandId1",
+                        column: x => x.BrandId1,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -313,7 +313,7 @@ namespace EcommercePro.Migrations
                         column: x => x.productId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -343,7 +343,7 @@ namespace EcommercePro.Migrations
                         column: x => x.productId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Orders_payments_PaymentId",
                         column: x => x.PaymentId,
@@ -378,7 +378,7 @@ namespace EcommercePro.Migrations
                         column: x => x.productId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -405,7 +405,7 @@ namespace EcommercePro.Migrations
                         column: x => x.productId,
                         principalTable: "Products",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -483,9 +483,9 @@ namespace EcommercePro.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_BrindId",
+                name: "IX_Products_BrandId1",
                 table: "Products",
-                column: "BrindId");
+                column: "BrandId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

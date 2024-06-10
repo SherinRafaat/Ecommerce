@@ -1,4 +1,5 @@
-﻿namespace EcommercePro.Repositiories
+﻿
+namespace EcommercePro.Repositiories
 {
     public interface IGenaricService<T>
     {
@@ -8,7 +9,6 @@
         bool Update(int id, T entity);
         List<T> GetAll();
         void Save();
-
-
+        Task SaveChangesAsync();
     }
 }

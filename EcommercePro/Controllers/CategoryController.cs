@@ -35,8 +35,7 @@ namespace EcommercePro.Controllers
         if(ModelState.IsValid)
             {
                 try
-                {
-                    
+                {              
                     this._genaricService.Add(new Category()
                     {
                         Name = newCategory.Name,
@@ -49,15 +48,8 @@ namespace EcommercePro.Controllers
                 {
                   return BadRequest(ex.Message);
                 }
-
-
-            }
-              
+            }  
                 return BadRequest("Not Add The Category");
-
-            
-
-
         }
         [HttpPut]
         public IActionResult Update(int id, CategoryData updateCategory)
