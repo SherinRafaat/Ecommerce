@@ -34,7 +34,11 @@ namespace EcommercePro
             }
 
            );
+
             builder.Services.AddTransient<IFileService, FileService>();
+            builder.Services.AddScoped<IContact,RepoContact>();
+            builder.Services.AddScoped<IWebsiteReview, WebsiteReviewRepo>();
+
 
             #region Authontication
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<Context>();
