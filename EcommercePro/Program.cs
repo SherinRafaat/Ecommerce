@@ -26,7 +26,7 @@ namespace EcommercePro
             builder.Services.AddSwaggerGen();
             #region inject repository 
             builder.Services.AddScoped<IGenaricService<Category>, GenericRepo<Category>>();
-
+            builder.Services.AddScoped<IGenaricService<Product>, GenericRepo<Product> > ();
             #endregion
             builder.Services.AddDbContext<Context>(option =>
             {
@@ -84,7 +84,7 @@ namespace EcommercePro
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-           Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+                Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
                 RequestPath = "/Resources"
             });
             app.MapControllers();
