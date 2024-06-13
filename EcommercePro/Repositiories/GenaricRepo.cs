@@ -38,7 +38,6 @@ namespace EcommercePro.Repositories
         {
             return _dbContext.Set<T>().Find(id);
         }
-
         public List<T> GetAll()
         {
             return _dbContext.Set<T>().ToList();
@@ -51,16 +50,17 @@ namespace EcommercePro.Repositories
             {
                  _dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
                 _dbContext.SaveChanges();
-
-
                 return true;
             }
             return false;
         }
-
         public void Save()
         {
             _dbContext.SaveChanges();
+        }
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }
